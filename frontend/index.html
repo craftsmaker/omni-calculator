@@ -6,32 +6,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="style.css"/>
+		<script src='main.js'></script>
 	</head>
 	<body>
-		<div class="container">
-			<main class="row-group">
-				<div class="row">
-					<button class="column">1</button>
-					<button class="column">2</button>
-					<button class="column">3</button>
-				</div>
-				<div class="row">
-					<button class="column">4</button>
-					<button class="column">5</button>
-					<button class="column">6</button>
-				</div>
-				<div class="row">
-					<button class="column">7</button>
-					<button class="column">8</button>
-					<button class="column">9</button>
-				</div>
-			</main>
-		</div>
-		<script>
-			function clicked(){
-				console.log(document.getElementById("1"))
-			}
-		</script>
+		<main class="container">
+			<div class="row">
+				<button class="column">1</button>
+				<button class="column">2</button>
+				<button class="column">3</button>
+			</div>
+			<div class="row">
+				<button class="column">4</button>
+				<button class="column">5</button>
+				<button class="column">6</button>
+			</div>
+			<div class="row">
+				<button class="column">7</button>
+				<button class="column">8</button>
+				<button class="column">9</button>
+			</div>
+			<div class="row">
+				<button style="width: 100%;">Enviar</button>
+			</div>
+		</main>
 		<button onclick="clicked()"></button>
 	</body>
 </html>

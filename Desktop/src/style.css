@@ -19,14 +19,15 @@
 }
 
 .child-container{
-  border-radius: 25px 25px 0 0; 
+  border: none;
 }
 
 #screen{
   height: 40vh;
   position: relative;
   background-color: black;
-  border-radius: inherit;
+  border: 6px solid purple;
+  border-radius: 25px 25px 0 0;
   color: white;
 }
 
@@ -42,6 +43,7 @@ p{
   padding: 20px 12px;
   width: 100%;
   text-align: center;
+  border: none;
 }
 
 p:hover{
@@ -49,16 +51,25 @@ p:hover{
   cursor: pointer;
 }
 
-#send{
+#buttons{
+  border: 4px solid purple;
   border-radius: 0 0 25px 25px;
+  overflow: hidden;
+
+}
+
+#send{
+  border: none;
+
+  border-radius: inherit;
 }
 
 #send p{
-  border-radius: inherit;
+  border: none;
 }
 
 @media screen and (max-width: 200px) {
   .teste {
-    width: 120px;
+    width: 100px;
   }
 }

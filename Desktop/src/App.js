@@ -5,7 +5,19 @@ function App(){
   const [val,setVal] = useState('');
 
   function handleClick(value){
-    setVal(value);
+    setVal(val + value);
+  }
+
+  function handleResult(){
+
+  }
+
+  function handleClean(){
+
+  }
+
+  function handleBack(){
+
   }
   
   return (
@@ -40,8 +52,14 @@ function App(){
               <p onClick={() => handleClick("/")}>/</p>
           </div>
 
+          <div className="teste">
+              <p onClick={() => handleClick("*")}>*</p>
+              <p onClick={() => handleClean("C")}>C</p>
+              <p onClick={() => handleBack("BACK")}>BACK</p>
+          </div>
+
           <div id="send" className="teste">
-              <p>=</p>
+              <p onClick={() => handleResult()}>=</p>
           </div>
         </div>        
       </div>

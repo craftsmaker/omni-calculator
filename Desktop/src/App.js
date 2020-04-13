@@ -13,11 +13,18 @@ function App(){
   }
 
   function handleClean(){
-
+    setVal("");
   }
 
   function handleBack(){
 
+    if (val.length != 0)
+    {
+      let value = val;
+      let i = val.length;
+      let new_value = value.replace(value[i - 1],"");
+      setVal(new_value);
+    }
   }
   
   return (
@@ -55,7 +62,7 @@ function App(){
           <div className="teste">
               <p onClick={() => handleClick("*")}>*</p>
               <p onClick={() => handleClean("C")}>C</p>
-              <p onClick={() => handleBack("BACK")}>BACK</p>
+              <p onClick={handleBack}>BACK</p>
           </div>
 
           <div id="send" className="teste">

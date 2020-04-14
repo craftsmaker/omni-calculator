@@ -5,9 +5,8 @@ function App(){
   const [val,setVal] = useState('');
 
   function handleClick(value){
-    let real = val + value;
     const OPERATORS = ["+","-","/","*"];
-    // console.log(isEvaluate(real));
+
     const evaluation = isEvaluate();
     if(OPERATORS.some(item => item === value) && evaluation){
       setVal(val);
@@ -20,8 +19,46 @@ function App(){
   function handleResult(){
     let values = val.split("");
 
-    if (isEvaluate(val)) {
+    const evaluation = isEvaluate();
+    const index = getOperator(val);
 
+    if (evaluation) {
+      // get every item before the operator
+      // mesh them into a string
+      let first = values.slice(0,index);
+      let second = values.slice(index + 1,values.length);
+      let operator = values.slice(index, index + 1);
+      operator = operator.toString();
+
+      first = first.toString().replace(/,/g,"");
+      second = second.toString().replace(/,/g,"");
+
+      if (first.length > 0 && second.length > 0){
+        let p1 = parseInt(first);
+        let p2 = parseInt(second);
+
+        let result = 0;
+
+        switch(operator){
+          case "+":
+            result = p1 + p2;
+            break;
+          case "-":
+            result = p1 - p2;
+            break;
+          case "*":
+            result = p1 * p2;
+            break;
+          case "/":
+            result = p1 / p2;
+            break;
+          default:
+            console.log("No operator:",operator)
+        }
+
+        result = result.toString();
+        setVal(result);
+      }
     }
   }
 
@@ -43,10 +80,7 @@ function App(){
     let screen_values = real.split("");
     let operator_index = -1;
 
-    console.log(screen_values);
-
-    console.log(`Screen Values: ${screen_values}`)
-    const operator = screen_values.some((value,index) => {
+    screen_values.some((value,index) => {
        if(OPERATORS.some(item =>  value === item)){
         operator_index = index
         return true;
@@ -58,10 +92,9 @@ function App(){
 
   function isEvaluate(){
     let operator = getOperator(val);
-    console.log(operator);
+
     let evaluation = operator !== -1 ? true : false
 
-    console.log(evaluation);
     return evaluation
   }
   

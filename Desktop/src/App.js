@@ -5,11 +5,24 @@ function App(){
   const [val,setVal] = useState('');
 
   function handleClick(value){
-    setVal(val + value);
+    let real = val + value;
+    const OPERATORS = ["+","-","/","*"];
+    // console.log(isEvaluate(real));
+    const evaluation = isEvaluate();
+    if(OPERATORS.some(item => item === value) && evaluation){
+      setVal(val);
+    }
+    else{
+      setVal(val + value);
+    }
   }
 
   function handleResult(){
+    let values = val.split("");
 
+    if (isEvaluate(val)) {
+
+    }
   }
 
   function handleClean(){
@@ -18,13 +31,38 @@ function App(){
 
   function handleBack(){
 
-    if (val.length != 0)
+    if (val.length !== 0)
     {
-      let value = val;
       let i = val.length;
-      let new_value = value.replace(value[i - 1],"");
-      setVal(new_value);
+      setVal(val.replace(val[i - 1],""));
     }
+  }
+
+  function getOperator(real) {
+    const OPERATORS = ["+","-","/","*"]
+    let screen_values = real.split("");
+    let operator_index = -1;
+
+    console.log(screen_values);
+
+    console.log(`Screen Values: ${screen_values}`)
+    const operator = screen_values.some((value,index) => {
+       if(OPERATORS.some(item =>  value === item)){
+        operator_index = index
+        return true;
+       }
+    });
+
+    return operator_index;
+  }
+
+  function isEvaluate(){
+    let operator = getOperator(val);
+    console.log(operator);
+    let evaluation = operator !== -1 ? true : false
+
+    console.log(evaluation);
+    return evaluation
   }
   
   return (

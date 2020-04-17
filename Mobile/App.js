@@ -51,10 +51,6 @@ export default function App(){
     const two = parseInt(value.substring(index + 1, value.length));
     const operator = value.substring(index,index + 1);
 
-    console.log(operator);
-    console.log(one);
-    console.log(two);
-
     switch(operator) {
       case "+":
         setValue((one + two).toString());

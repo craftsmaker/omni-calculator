@@ -3,20 +3,55 @@ import './style.css'
 
 function App(){
   const [val,setVal] = useState('');
+  
+  function handleChange(value){
+    setVal(value);
+  }
+
+  function handleKeyPressed(e){
+    const key = e.key;
+
+    if (isValid(key)){
+      setVal(val + key);
+    }
+  }
+
+  function isValid(key){
+    return ["1","2","3","4","5","6","7","8","9"].some(value => value === key)
+       || ["+","-","/","*"].some(value => value === key) ? true : false
+  }
+
+  return (
+    <div className="container" onKeyDown={handleKeyPressed} tabIndex="0">
+      <div className="child-container">
+
+        <div id="screen">
+          <div className="teste">
+            <div id="answer">{val}</div>
+          </div>
+        </div>
+
+        <Buttons value={val} onChange={handleChange}/>
+      </div>
+    </div>
+  )
+}
+
+function Buttons(props){
+  let val = props.value;
+
   const [index,setIndex] = useState(-1);
   const OPERATORS = ["+","-","/","*"]
-  const numbers = [1,2,3,4,5,6,7,8,9]
-  let n =  0;
+  const numbers = ["1","2","3","4","5","6","7","8","9"]
 
   function handleClick(value){
-    
-    if (OPERATORS.some(item => item === value) || numbers.some(item => item.toString() === value)){
+    if (OPERATORS.some(item => item === value) || numbers.some(item => item === value)){
       const evaluation = isEvaluate();
       if(OPERATORS.some(item => item === value) && !evaluation){
-        setVal(val);
+        props.onChange(val);
       }
       else{
-        setVal(val + value);
+        props.onChange(val + value);
       }  
     }
   }
@@ -50,11 +85,11 @@ function App(){
       }
 
         result = result.toString();
-        setVal(result);
+        props.onChange(result);
   }
 
   function handleClean(){
-    setVal("");
+    props.onChange("");
   }
 
   function handleBack(){
@@ -62,7 +97,7 @@ function App(){
     if (val.length !== 0)
     {
       let i = val.length;
-      setVal(val.replace(val[i - 1],""));
+      props.onChange(val.replace(val[i - 1],""));
     }
   }
 
@@ -78,18 +113,9 @@ function App(){
       })
     );
   }
-  
+
   return (
-    <div className="container">
-      <div className="child-container">
-
-        <div id="screen">
-          <div className="teste">
-            <div id="answer">{val}</div>
-          </div>
-        </div>
-
-        <div id="buttons" >
+    <div id="buttons" >
           <div className="teste">
               <p onClick={() => handleClick(numbers[0])}>{numbers[0]}</p>
               <p onClick={() => handleClick(numbers[1])}>{numbers[1]}</p>
@@ -120,11 +146,7 @@ function App(){
           <div id="send" className="teste">
               <p onClick={() => handleResult()}>=</p>
           </div>
-        </div>        
-      </div>
-    </div>
-  )
+        </div>   
+  )    
 }
-
-
 export default App;

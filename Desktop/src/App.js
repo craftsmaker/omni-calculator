@@ -32,7 +32,7 @@ function App(){
 
   function isValided(key){
     return ["0","1","2","3","4","5","6","7","8","9"].some(value => value === key)
-       || ["+","-","/","*","Enter"].some(value => value === key) ? true : false
+       || ["/","+","-","*","Enter"].some(value => value === key) ? true : false
   }
 
   return (
@@ -140,34 +140,35 @@ function Buttons(props){
   return (
     <div id="buttons" >
           <div className="teste">
-              <p onClick={() => handleClick(numbers[0])}>{numbers[0]}</p>
               <p onClick={() => handleClick(numbers[1])}>{numbers[1]}</p>
               <p onClick={() => handleClick(numbers[2])}>{numbers[2]}</p>
+              <p onClick={() => handleClick(numbers[3])}>{numbers[3]}</p>
               <p onClick={() => handleClick(OPERATORS[0])}>{OPERATORS[0]}</p>
           </div>
 
           <div className="teste">
-              <p onClick={() => handleClick(numbers[3])}>{numbers[3]}</p>
               <p onClick={() => handleClick(numbers[4])}>{numbers[4]}</p>
               <p onClick={() => handleClick(numbers[5])}>{numbers[5]}</p>
+              <p onClick={() => handleClick(numbers[6])}>{numbers[6]}</p>
               <p onClick={() => handleClick(OPERATORS[1])}>{OPERATORS[1]}</p>
           </div>
 
           <div className="teste">
-              <p onClick={() => handleClick(numbers[6])}>{numbers[6]}</p>
               <p onClick={() => handleClick(numbers[7])}>{numbers[7]}</p>
               <p onClick={() => handleClick(numbers[8])}>{numbers[8]}</p>
+              <p onClick={() => handleClick(numbers[9])}>{numbers[9]}</p>
               <p onClick={() => handleClick(OPERATORS[2])}>{OPERATORS[2]}</p>
           </div>
 
           <div className="teste">
-              <p onClick={() => handleClick(OPERATORS[3])}>{OPERATORS[3]}</p>
-              <p onClick={() => handleClean("C")}>C</p>
               <p onClick={handleBack}>BACK</p>
+              <p onClick={() => handleClean("C")}>C</p>
+              <p>,</p>
+              <p onClick={() => handleClick(OPERATORS[3])}>{OPERATORS[3]}</p>
           </div>
 
           <div id="send" className="teste">
-              <p onClick={() => handleClick(OPERATORS[4])}>{OPERATORS[4]}</p>
+              <p onClick={() => handleClick(OPERATORS[4])}>=</p>
           </div>
         </div>   
   )    

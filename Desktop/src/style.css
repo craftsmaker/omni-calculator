@@ -9,30 +9,21 @@
 body{
   overflow: hidden;
 }
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(20,30,100);
-}
 
 .teste{
   display: flex;
   flex-direction: row;
-  width: 70vw;
 }
 
 .child-container{
-  border-radius: 25px;
-  border: 6px solid purple;
-  overflow: hidden;
-  box-shadow: 5px 5px 15px gray;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 
 #screen{
-  height: 40vh;
+  height: 100%;
   position: relative;
   background-color: black;
   
@@ -51,17 +42,10 @@ p{
   padding: 20px 12px;
   width: 100%;
   text-align: center;
-  border: none;
 
 }
 
 p:hover{
   filter: brightness(0.8);
   cursor: pointer;
-}
-
-@media screen and (max-width: 200px) {
-  .teste {
-    width: 100px;
-  }
 }

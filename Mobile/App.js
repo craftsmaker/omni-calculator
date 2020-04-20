@@ -120,8 +120,6 @@ const styles = StyleSheet.create({
   },
   childContainer: {
     flex: 1,
-    borderColor: "gray",
-    borderWidth: 4,
     width: "100%",
     overflow: "hidden",
   },

@@ -1,24 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './style.css'
 
 function App(){
   const [val,setVal] = useState('');
-  
+  const [keyValue, setKeyValue] = useState("");
+
   function handleChange(value){
     setVal(value);
+    setKeyValue("");
   }
 
   function handleKeyPressed(e){
     const key = e.key;
 
-    if (isValid(key)){
-      setVal(val + key);
+    if (isValided(key)){
+      if (key === "Enter")
+      {
+        setKeyValue("Enter");
+      }
+      else{
+        setVal(val + key);
+      }
     }
   }
 
-  function isValid(key){
-    return ["1","2","3","4","5","6","7","8","9"].some(value => value === key)
-       || ["+","-","/","*"].some(value => value === key) ? true : false
+  function isValided(key){
+    return ["0","1","2","3","4","5","6","7","8","9"].some(value => value === key)
+       || ["+","-","/","*","Enter"].some(value => value === key) ? true : false
   }
 
   return (
@@ -31,7 +39,7 @@ function App(){
           </div>
         </div>
 
-        <Buttons value={val} onChange={handleChange}/>
+        <Buttons keyValue={keyValue} value={val} onChange={handleChange}/>
       </div>
     </div>
   )
@@ -39,16 +47,27 @@ function App(){
 
 function Buttons(props){
   let val = props.value;
+  let keyValue = props.keyValue;
 
-  const [index,setIndex] = useState(-1);
-  const OPERATORS = ["+","-","/","*"]
-  const numbers = ["1","2","3","4","5","6","7","8","9"]
+  let index = -1;
+  const OPERATORS = ["+","-","/","*","Enter"]
+  const numbers = ["0","1","2","3","4","5","6","7","8","9"]
+
+  useEffect(()=>{if (keyValue) {handleClick(keyValue)}});
 
   function handleClick(value){
-    if (OPERATORS.some(item => item === value) || numbers.some(item => item === value)){
+    const checking = OPERATORS.some(item => item === value);
+
+    if (checking || numbers.some(item => item === value)){
       const evaluation = isEvaluate();
-      if(OPERATORS.some(item => item === value) && !evaluation){
-        props.onChange(val);
+
+      if(checking && !evaluation){
+        if (value === "Enter"){
+          props.onChange(handleResult());
+        }
+        else {
+          props.onChange(val);
+        }
       }
       else{
         props.onChange(val + value);
@@ -57,13 +76,11 @@ function Buttons(props){
   }
 
   function handleResult(){
+    let value = val;
 
-    let first = val.substring(0,index);
-    let second = val.substring(index + 1,val.length);
-    let operator = val.substring(index, index + 1);
-      
-    let p1 = parseInt(first);
-    let p2 = parseInt(second);
+    let p1 = parseInt(value.substring(0,index));
+    let p2 = parseInt(value.substring(index + 1,val.length));
+    let operator = value.substring(index, index + 1);
 
     let result = 0;
 
@@ -83,9 +100,8 @@ function Buttons(props){
       default:
         console.log("No operator:",operator)
       }
-
-        result = result.toString();
-        props.onChange(result);
+      
+      return result.toString();
   }
 
   function handleClean(){
@@ -103,13 +119,14 @@ function Buttons(props){
 
   function isEvaluate(){
     let arrayValue = val.split("");
-
+    console.log(index);
     return !(
-      arrayValue.some((value,index) => {
-        if (OPERATORS.some(item => value === item)){
-          setIndex(index);
+      arrayValue.some((value,i) => {
+        const checking = OPERATORS.some(item => value === item);
+        if (checking){
+          index = i;
         }
-        return OPERATORS.some(item => value === item);
+        return checking;
       })
     );
   }
@@ -144,7 +161,7 @@ function Buttons(props){
           </div>
 
           <div id="send" className="teste">
-              <p onClick={() => handleResult()}>=</p>
+              <p onClick={() => handleClick(OPERATORS[4])}>{OPERATORS[4]}</p>
           </div>
         </div>   
   )    

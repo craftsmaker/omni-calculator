@@ -1,9 +1,15 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useRef} from 'react';
 import './style.css'
 
 function App(){
   const [val,setVal] = useState('');
   const [keyValue, setKeyValue] = useState("");
+  let div = useRef(null);
+
+  useEffect(() => {
+    
+    div.current.focus()
+  })
 
   function handleChange(value){
     setVal(value);
@@ -30,7 +36,7 @@ function App(){
   }
 
   return (
-    <div className="container" onKeyDown={handleKeyPressed} tabIndex="0">
+    <div className="container" onKeyDown={handleKeyPressed} tabIndex="0" ref={div}>
       <div className="child-container">
 
         <div id="screen">

@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "Calculator",
     "slug": "Caculator",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "version": "1.0.1",
+    "android": {
+      "package": "craftsmaker.calculator",
+      "versionCode": 1
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

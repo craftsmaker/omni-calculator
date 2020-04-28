@@ -7,9 +7,10 @@
 </p>
 
 <p align="center">
-  <a href="">Technology</a> &nbsp; &nbsp; | &nbsp; &nbsp;
-  <a href="">Project</a> &nbsp; &nbsp; | &nbsp; &nbsp;
-  <a href="">License</a>
+  <a href="#-thecnology">Technology</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#-project">Project</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#-license">License</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#-development">Development</a>
 </p>
 
 <p align="center">
@@ -26,6 +27,16 @@
 ## Project
 
 The OmniCalculator is a project to realize the basic operations of a calculator
+
+## Development
+
+ - Fork this repository
+ - Git clone your fork to local environment
+ - Create a branch with `git checkout -b my-feature`
+ - Do a commit after alterations `git commit -m 'feat: Minha nova feature'`
+ - Do a push of your branch `git push origin my-feature`
+
+After the merge of your pull request is made you can delete your branch
 
 ## License
 

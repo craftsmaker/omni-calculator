@@ -7,10 +7,10 @@
 </p>
 
 <p align="center">
-  <a href="#-thecnology">Technology</a> &nbsp; &nbsp; | &nbsp; &nbsp;
-  <a href="#-project">Project</a> &nbsp; &nbsp; | &nbsp; &nbsp;
-  <a href="#-license">License</a> &nbsp; &nbsp; | &nbsp; &nbsp;
-  <a href="#-development">Development</a>
+  <a href="#thecnology">Technology</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#project">Project</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#license">License</a> &nbsp; &nbsp; | &nbsp; &nbsp;
+  <a href="#development">Development</a>
 </p>
 
 <p align="center">
